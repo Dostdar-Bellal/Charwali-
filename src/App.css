@@ -1,0 +1,1127 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #102719;
+}
+
+.charwali {
+  min-height: 100vh;
+  width: 100%;
+  padding: 10px 4px;
+  box-sizing: border-box;
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  color: #e8ca70;
+  font-size: 28px;
+  letter-spacing: 3px;
+}
+
+.kopf .deko-linie {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  color: #e8ca70;
+  font-size: 24px;
+}
+
+.steuerung {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 8px auto;
+}
+button {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 8px;
+  background: #e8ca70;
+  color: #142319;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.steuerung button {
+  width: 190px;
+  max-width: 100%;
+  min-height: 36px;
+  padding: 7px 12px;
+  font-size: 14px;
+}
+
+.statusbereich {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 14px;
+  border: 2px solid #45f5d0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #064c49, #08766b);
+  color: #ffffff;
+  box-shadow:
+    0 0 10px #45f5d0,
+    0 0 22px #168f83,
+    inset 0 0 10px #168f83;
+}
+.status-titel {
+  margin-bottom: 8px;
+  color: #e8ca70;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.rundenzaehler {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.runde {
+  min-width: 130px;
+  padding: 10px;
+  border: 1px solid #b88a42;
+  border-radius: 8px;
+}
+
+.runde span,
+.runde strong {
+  display: block;
+  margin: 4px;
+}
+
+.tisch.neuer-tisch {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 1000px;
+  height: 820px;
+min-height: 820px;
+  margin: 20px auto;
+  padding: 12px;
+  box-sizing: border-box;
+  overflow: visible;
+
+  background: radial-gradient(ellipse, #168047, #07552d);
+  border: 7px solid #b88a42;
+  border-radius: 80px;
+  box-shadow:
+    inset 0 0 0 3px #e8ca70,
+    0 8px 20px #0006;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 1fr);
+  grid-template-rows: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: 8px;
+}.tisch-mitte {
+  grid-column: 2;
+  grid-row: 2;
+  color: #fff0b5;
+  pointer-events: none;
+}
+
+.tisch-mitte h2 {
+  color: #f1d474;
+  font-size: 28px;
+  letter-spacing: 3px;
+}
+
+.tisch-mitte p {
+  font-size: 14px;
+}
+
+.ornament {
+  font-size: 30px;
+  color: #f1d474;
+}
+
+.kartenfarben {
+  margin-top: 8px;
+  font-size: 23px;
+  letter-spacing: 6px;
+  color: #f1d474;
+}
+
+.spieler {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.spieler h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 10px;
+  color: #fff0b5;
+  font-size: 15px;
+}
+
+.spieler.oben {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.spieler.links {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.spieler.rechts {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.spieler.unten {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+/* Stühle */
+css
+.spieler.oben::before {
+  left: 50%;
+  top: calc(100% + 8px);
+  bottom: auto;
+  transform: translateX(-50%) rotate(180deg);
+}
+
+/* Linker Spieler: Stuhl links außerhalb des Tisches */
+.spieler.links::before {
+  left: auto;
+  right: calc(100% + 18px);
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* Rechter Spieler: Stuhl rechts außerhalb des Tisches */
+.spieler.rechts::before {
+  left: calc(100% + 18px);
+  right: auto;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+/* Unterer Spieler: Stuhl unterhalb des Tisches */
+.spieler.unten::before {
+  left: 50%;
+  top: auto;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
+}
+
+
+/* Karten */
+.karten {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.spielkarte {
+  position: relative;
+  display: block;
+  flex: 0 0 auto;
+  width: 48px;
+  height: 70px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #d8d2c4;
+  border-radius: 6px;
+  background: #fffdf5;
+  box-shadow: 0 2px 5px #0006;
+  touch-action: manipulation;
+}
+
+.spielkarte.vorderseite {
+  background: linear-gradient(135deg, #fffefa, #eee9dc);
+}
+
+.spielkarte.ziehbare-karte {
+  cursor: grab;
+  touch-action: none;
+}
+
+.spielkarte.ziehbare-karte:active {
+  cursor: grabbing;
+}
+
+.spielkarte.karte-ausgewaehlt {
+  outline: 3px solid #f5d66c;
+  transform: translateY(-5px);
+  opacity: 0.75;
+}
+
+.spielkarte .karten-ecke {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1;
+}
+
+.spielkarte .karten-ecke strong {
+  font-size: 14px;
+}
+
+.spielkarte .karten-ecke span {
+  font-size: 12px;
+}
+
+.spielkarte .oben-links {
+  top: 4px;
+  left: 4px;
+}
+
+.spielkarte .unten-rechts {
+  right: 4px;
+  bottom: 4px;
+  transform: rotate(180deg);
+}
+
+.spielkarte .kartenzeichen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 29px;
+  transform: translate(-50%, -50%);
+}
+
+.spielkarte.rot {
+  color: #bd1e32;
+}
+
+.spielkarte.schwarz {
+  color: #181818;
+}
+
+.spielkarte.rueckseite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  border: 2px solid #f7f0d9;
+  background: #183b70;
+}
+
+.spielkarte .kartenmuster {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid #d9bd77;
+  background: repeating-linear-gradient(
+    45deg,
+    #183b70,
+    #183b70 4px,
+    #254d87 4px,
+    #254d87 6px
+  );
+  color: #f4d98c;
+  font-size: 14px;
+}
+
+.spielkarte .kartenmuster span:nth-child(2) {
+  font-size: 21px;
+}
+
+/* Karten ziehen */
+.ziehkarten {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 8px auto;
+}
+
+.ziehkarte {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-width: 48px;
+}
+
+.ziehkarte .spielkarte {
+  width: 48px;
+  height: 69px;
+}
+
+.ziehkarte .kartenzeichen {
+  font-size: 27px;
+}
+
+.ziehkarte .karten-ecke strong {
+  font-size: 13px;
+}
+
+.ziehkarte .karten-ecke span {
+  font-size: 11px;
+}
+.ziehkarte > strong {
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.ziehkarte:has(.gewinner-markierung) > strong {
+  color: #39ff75;
+  text-shadow: 0 0 8px #39ff75;
+  box-shadow: 0 0 8px #39ff75;
+}
+.gewinner-markierung {
+  color: #39ff75;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 5px 10px;
+  border: 1px solid #39ff75;
+  border-radius: 8px;
+  text-shadow: 0 0 8px #39ff75;
+  box-shadow: 0 0 10px #39ff75;
+  background: rgba(57, 255, 117, 0.12);
+}/* Sortieren direkt auf dem Tisch */
+.tisch.pack-phase {
+  min-height: 850px;
+  grid-template-rows: auto auto auto;
+  align-items: start;
+  padding-bottom: 28px;
+}
+
+.pack-phase .tisch-mitte {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+}
+
+.pack-phase .spieler.oben {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.pack-phase .spieler.links {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.pack-phase .spieler.rechts {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.pack-phase .spieler.unten {
+  grid-column: 1 / 4;
+  grid-row: 3;
+  width: 100%;
+  align-self: end;
+}
+
+.hand-zum-sortieren {
+  max-width: 800px;
+  min-height: 82px;
+  padding: 8px;
+  border: 1px dashed #e8ca70;
+  border-radius: 12px;
+  background: #06482599;
+}
+
+.sortier-auf-dem-tisch {
+  grid-column: 1 / 4;
+  grid-row: 2;
+  align-self: center;
+  width: 100%;
+  max-width: 1000px;
+  position: relative;
+  z-index: 5;
+  margin: 8px auto;
+  padding: 16px;
+  border: 1px solid #e8ca70;
+  border-radius: 16px;
+  background: #064825e8;
+}
+
+.sortier-auf-dem-tisch > h3 {
+  margin-top: 0;
+  color: #fff0b5;
+  font-size: 21px;
+}
+
+.packs-auswahl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+.pack-feld {
+  min-width: 0;
+  min-height: 150px;
+  padding: 10px 6px;
+  border: 2px dashed #f0d68a;
+  border-radius: 12px;
+  background: #0a6336;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.pack-feld h4 {
+  margin: 0 0 10px;
+  color: #fff0b5;
+  font-size: 16px;
+}
+
+.pack-feld .pack-karten {
+  min-height: 74px;
+  gap: 4px;
+}
+
+.pack-feld .spielkarte {
+  width: 43px;
+  height: 63px;
+}
+
+.pack-feld .spielkarte .karten-ecke strong {
+  font-size: 12px;
+}
+
+.pack-feld .spielkarte .karten-ecke span {
+  font-size: 10px;
+}
+
+.pack-feld .spielkarte .kartenzeichen {
+  font-size: 25px;
+}
+
+.pack-feld .pack-leer {
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  justify-content: center;
+  color: #e5f3e9;
+  font-size: 12px;
+}
+
+.pack-feld .pack-zaehler {
+  display: block;
+  margin-top: 8px;
+  color: #fff0b5;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.pack-feld.pack-voll {
+  border-style: solid;
+  border-color: #f5dfa0;
+  background: #147c45;
+}
+.pack-feld.pack-falsch {
+  border: 2px solid #ff3030 !important;
+  background: #701818 !important;
+  box-shadow: 0 0 12px #ff3030;
+}
+.vierling-feld {
+  background: #777 !important;
+  border: 2px dashed #ccc;
+}
+
+.vierling-feld h4 {
+  color: #fff;
+}
+
+.vierling-feld .pack-leer {
+  color: #fff;
+}
+
+.vierling-feld.pack-voll {
+  background: #0a6336 !important;
+  border: 2px solid #f5dfa0;
+}
+.sortier-auf-dem-tisch > p {
+  margin: 12px 0;
+}
+
+.sortier-auf-dem-tisch > button {
+  margin-top: 6px;
+}
+
+/* Spielergebnisse */
+.sortierbereich {
+  max-width: 800px;
+  margin: 8px auto;
+  padding: 16px;
+  border: 1px solid #e8ca70;
+  border-radius: 12px;
+  background: #153b28;
+}
+
+.kartenanzahl {
+  display: block;
+  margin-top: 8px;
+  color: #fff0b5;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.fusszeile {
+  padding: 18px 0;
+  color: #e8ca70;
+  letter-spacing: 3px;
+}
+
+/* Mobile Ansicht */
+@media (max-width: 700px) {
+  .charwali {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 28px;
+    letter-spacing: 3px;
+  }
+
+  .tisch {
+    min-height: 560px;
+    padding: 8px;
+    border-width: 5px;
+    border-radius: 40px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .spieler h3 {
+    font-size: 11px;
+  }
+
+  .karten {
+    gap: 4px;
+  }
+
+  .spielkarte {
+    width: 36px;
+    height: 53px;
+    border-radius: 4px;
+  }
+
+  .spielkarte .karten-ecke strong {
+    font-size: 11px;
+  }
+
+  .spielkarte .karten-ecke span {
+    font-size: 9px;
+  }
+
+  .spielkarte .oben-links {
+    top: 3px;
+    left: 3px;
+  }
+
+  .spielkarte .unten-rechts {
+    right: 3px;
+    bottom: 3px;
+  }
+
+  .spielkarte .kartenzeichen {
+    font-size: 22px;
+  }
+
+  .spielkarte .kartenmuster {
+    font-size: 11px;
+  }
+
+  .spielkarte .kartenmuster span:nth-child(2) {
+    font-size: 16px;
+  }
+
+  .tisch-mitte h2 {
+    font-size: 17px;
+  }
+
+  .tisch-mitte p {
+    font-size: 11px;
+  }
+
+  .ziehkarten {
+    gap: 8px;
+  }
+
+  .ziehkarte .spielkarte {
+    width: 54px;
+    height: 78px;
+  }
+
+  .spieler::before {
+    width: 78px;
+    height: 74px;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+
+  .spieler.oben::before {
+    top: calc(100% + 5px);
+    transform: translateX(-50%) scale(0.85);
+  }
+
+  /* Linker Spieler: Stuhl außerhalb links, zum Tisch ausgerichtet */
+css
+/* Linker Spieler: Stuhl links außerhalb des Tisches */
+.spieler.links::before {
+  left: auto;
+  right: calc(100% + 18px);
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* Rechter Spieler: Stuhl rechts außerhalb des Tisches */
+.spieler.rechts::before {
+  left: calc(100% + 18px);
+  right: auto;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+
+
+  .spieler.unten::before {
+    top: auto;
+    bottom: calc(100% + 5px);
+    transform: translateX(-50%) rotate(180deg) scale(0.85);
+  }
+
+  .tisch.pack-phase {
+    min-height: 1000px;
+    grid-template-rows: auto auto auto;
+    padding: 12px;
+    border-radius: 28px;
+  }
+
+  .pack-phase .tisch-mitte {
+    grid-column: 1 / 4;
+    grid-row: 1;
+  }
+
+  .pack-phase .spieler.oben {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .pack-phase .spieler.links {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .pack-phase .spieler.rechts {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .pack-phase .spieler.unten {
+    grid-column: 1 / 4;
+    grid-row: 3;
+  }
+
+  .sortier-auf-dem-tisch {
+    grid-column: 1 / 4;
+    grid-row: 2;
+    margin-top: 150px;
+    padding: 8px;
+  }
+
+  .packs-auswahl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pack-feld {
+    min-height: 130px;
+    padding: 8px 4px;
+  }
+
+  .pack-feld h4 {
+    font-size: 14px;
+  }
+
+  .pack-feld .spielkarte {
+    width: 32px;
+    height: 47px;
+  }
+
+  .pack-feld .spielkarte .karten-ecke strong {
+    font-size: 10px;
+  }
+
+  .pack-feld .spielkarte .karten-ecke span {
+    font-size: 8px;
+  }
+
+  .pack-feld .spielkarte .kartenzeichen {
+    font-size: 19px;
+  }
+
+  .hand-zum-sortieren {
+    max-width: 100%;
+    gap: 3px;
+    padding: 5px;
+  justify-content: center;
+      box-sizing: border-box;
+    flex-wrap: wrap;
+  }
+  
+}
+css
+/* Stühle vollständig ausblenden */
+.spieler::before {
+  display: none !important;
+}
+/* Gemeinsamer Topf: allein und zentriert darstellen */
+.tisch-mitte .gemeinsamer-topf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-width: 190px;
+  margin: 20px auto;
+  padding: 16px 24px;
+  text-align: center;
+  border-radius: 16px;
+  gap: 10px;
+}
+.gemeinsamer-topf.topf-aktiv {
+  border: 2px solid #39ff75;
+  box-shadow:
+    0 0 8px #39ff75,
+    0 0 18px #39ff75,
+    0 0 30px rgba(57, 255, 117, 0.5);
+}
+.tisch-mitte .gemeinsamer-topf strong {
+  font-size: 18px;
+  font-weight: bold;
+}
+/* In der Tischmitte nur den gemeinsamen Topf zeigen */
+.tisch-mitte .ornament,
+.tisch-mitte h2 {
+  display: none !important;
+}
+
+.tisch-mitte .gemeinsamer-topf {
+  margin: 8px auto;
+}
+/* Eingabe für die Start-Token anklickbar machen */
+.tisch-mitte .gemeinsamer-topf {
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+.tisch-mitte .gemeinsamer-topf input {
+  position: relative;
+  z-index: 21;
+  pointer-events: auto;
+  cursor: text;
+}
+.tokenchips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.token-chip {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 13px;
+  color: white;
+  border: 3px solid #e5c77b;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+}
+
+.token-chip-5 {
+  background: #2878c8;
+}
+
+.token-chip-10 {
+  background: #26934a;
+}
+
+.token-chip-20 {
+  background: #c33c3c;
+}
+
+.token-chip-50 {
+  background: #8b50b5;
+}
+
+.token-chip-100 {
+  background: #c58b19;
+}
+.spielerfigur {
+  font-size: 42px;
+  line-height: 1.3;
+  text-align: center;
+  margin: 5px 0 10px;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.4));
+}
+.aktionsleiste {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: auto;
+}
+.aktionsleiste button {
+  white-space: nowrap;
+  width: auto !important;
+  flex: 0 0 auto;
+}
+/* Karten während des Austeilens */
+.verteil-phase .spieler {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.verteil-phase .spieler .karten {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+/* Ziehbereich auf schmalen Bildschirmen kompakter darstellen */
+@media (max-width: 700px) {
+  .ziehbereich {
+    margin: 6px auto;
+    padding: 6px;
+  }
+
+  .ziehkarten {
+    gap: 5px;
+    margin: 4px auto;
+  }
+
+  .ziehkarte {
+    min-width: 42px;
+    gap: 3px;
+  }
+
+  .ziehkarte .spielkarte {
+    width: 38px;
+    height: 55px;
+  }
+
+  .ziehkarte .kartenzeichen {
+    font-size: 21px;
+  }
+}
+@media (max-width: 700px) {
+  .ziehbereich .erklaerung {
+    margin: 3px 0;
+    line-height: 1.2;
+  }
+
+  .ziehbereich .ziehkarten {
+    gap: 4px;
+    margin: 2px auto;
+  }
+
+  .ziehbereich .ziehkarte {
+    gap: 2px;
+  }
+
+  .ziehbereich .ziehkarte .spielkarte {
+    width: 32px;
+    height: 46px;
+  }
+
+  .ziehbereich button {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+@media (max-width: 700px) {
+  .ziehbereich .ziehkarte {
+    width: 58px;
+    min-width: 58px;
+    max-width: 58px;
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
+
+  .ziehbereich .ziehkarte strong {
+    font-size: 11px;
+    line-height: 1.1;
+  }
+}
+.spieler .tokenstand {
+  font-size: 12px;
+  margin: 3px 0;
+}
+
+.spieler .tokenstand strong {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.spieler .einsatzanzeige {
+  font-size: 11px;
+  margin: 3px 0;
+}
+.vierling-bereich {
+  min-height: 70px;
+  min-width: 190px;
+  border: 2px solid #888;
+  border-radius: 8px;
+  background: #777;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.vierling-bereich.mit-vierling {
+  background: transparent;
+}
+.vierling-feld {
+  grid-column: 1 / -1;
+  width: 240px;
+  min-height: 100px;
+  justify-self: center;
+  padding: 6px;
+}
+
+.vierling-feld .pack-karten {
+  min-height: 50px;
+}
+/* Aktuellen Kartengeber hervorheben */
+.kartengeber-anzeige {
+  display: inline-block;
+  margin: 12px auto;
+  padding: 12px 22px;
+  border: 2px solid #e8ca70;
+  border-radius: 12px;
+  background: #073b25;
+  color: #f1d474;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 0 12px #0008;
+}
+
+
+.kartengeber-anzeige {
+  display: inline-block;
+  margin: 12px auto;
+  padding: 12px 22px;
+  border: 2px solid #39ff75;
+  border-radius: 12px;
+  background: #073b25;
+  color: #39ff75;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow:
+    0 0 10px #39ff75,
+    0 0 22px #168047,
+    inset 0 0 10px #168047;
+  animation: kartengeberGlanz 1.5s infinite alternate;
+}
+
+.kartengeber-anzeige strong {
+  color: #ffffff;
+  font-size: 21px;
+  text-shadow: 0 0 8px #39ff75;
+}
+
+@keyframes kartengeberGlanz {
+  from {
+    box-shadow: 0 0 8px #39ff75, 0 0 14px #168047;
+  }
+  to {
+    box-shadow: 0 0 18px #39ff75, 0 0 30px #168047;
+  }
+}
+.kartengeber-anzeige strong {
+  color: #39ff75;
+  font-size: 21px;
+  text-shadow: 0 0 6px #168047;
+}
+/* Kartengeber und Rundengewinner markieren */
+.spieler h3.spieler-titel-aktiv {
+
+  color: #39ff75;
+  font-size: 17px;
+  font-weight: bold;
+  text-shadow: 0 0 8px #39ff75;
+}
+/* Vierling auf dem Spieltisch hervorheben */
+.vierling-leuchtet {
+  padding: 10px !important;
+  border: 3px solid #ffd700;
+  border-radius: 14px;
+  background: rgba(20, 120, 55, 0.45);
+  box-shadow:
+    0 0 10px #ffd700,
+    0 0 22px #39ff75,
+    inset 0 0 12px #ffd700;
+  animation: vierlingGlanz 1.5s infinite alternate;
+}
+
+@keyframes vierlingGlanz {
+  from {
+    box-shadow: 0 0 8px #ffd700, 0 0 14px #39ff75;
+  }
+  to {
+    box-shadow: 0 0 18px #ffd700, 0 0 30px #39ff75;
+  }
+}
+/* Aufdecken-Button grün leuchtend */
+.aufdecken-button {
+  background: #087a3c;
+  color: #ffffff;
+  border: 2px solid #39ff75;
+  box-shadow:
+    0 0 10px #39ff75,
+    0 0 20px #168047,
+    inset 0 0 8px #168047;
+  text-shadow: 0 0 6px #39ff75;
+  animation: aufdeckenGlanz 1.5s infinite alternate;
+}
+
+@keyframes aufdeckenGlanz {
+  from {
+    box-shadow: 0 0 8px #39ff75, 0 0 14px #168047;
+  }
+  to {
+    box-shadow: 0 0 18px #39ff75, 0 0 30px #168047;
+  }
+}
